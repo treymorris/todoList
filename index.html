@@ -11,24 +11,27 @@
     <div class="container">
         <h1>Task Manager</h1>
         <div class="navbar">
-            <div class="nav-btn" id="project-list-btn">Project List</div>
+            <div class="nav-btn" id="project-list-btn">All Projects</div>
             <div class="nav-btn" id="add-project-button">Add New Project</div>
         </div>
+        <div class="popup-form">
+            <form  class="form-container" id="form">
+                <input type="text" id="title" placeholder="Project Title" name="title" required>
+                <input type="text" id="project-description" placeholder="Project Description" name="project-description" required>
+                <input type="date" id="due-date" placeholder="Due Date" name="due-date" required>
+                <input type="number" id="quantity" name="quantity" min="1" max="5" placeholder="Priority Level 1 -5">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
             <form class="project-card">
-                <h2 class="project-title" id="title">Sample Project</h2>
-                <p id="description">This is a description of my sample project.</p>
+                <h2 class="project-title" id="title"></h2>
+                <p id="description"></p>
                 <div class="todo-header">
                     <h2>To Do List</h2>
                     <input type="text" id="todotext" placeholder="task...">
                     <span class="add-btn" id="add">Add</span>
                 </div>
-                <ul id="list">
-                    <li>stuff to dooo</li>
-                    <li>more stuff</li>
-                    <li>extra stuff</li>
-                    <li>too much stuff</li>
-                    <li>finally fun stuff</li>
-                </ul>
+                <ul id="list"></ul>
             </form>
 
     </div>
