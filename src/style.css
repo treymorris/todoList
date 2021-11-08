@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    
 }
 
 body {
@@ -16,6 +17,7 @@ h1 {
 
 h2 {
     text-align: center;
+    padding-bottom: 10px;
 }
 
 ul { 
@@ -31,6 +33,7 @@ li {
     font-size: 18px;
     font-weight: 600;
     padding: 10px;
+    
 }
 
 ul li {
@@ -174,17 +177,31 @@ input:hover:nth-child(6) {
 .form-container {
   display: none;
   position: absolute;
+  z-index: 1;
   border: solid 10px black;
   width: 425px;
   margin-bottom: 20px;  
+
+  animation-name: addProjectMenu;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 #todotext {
-  margin: 0;
   border: none;
   border-radius: 0;
   width: 75%;
   padding: 10px;
   float: left;
   font-size: 16px;
+}
+
+@keyframes addProjectMenu {
+    0% 
+        {opacity: 0;
+        transform: rotate(-90deg) translate(30px)}
+    100% 
+        {opacity: 1;
+        transform: rotate(0deg) translate(0px)}
 }
