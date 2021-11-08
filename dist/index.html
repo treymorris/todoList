@@ -10,21 +10,21 @@
 <body>
     <div class="container">
         <h1>Task Manager</h1>
-        <div class="navbar">
-            <div class="nav-btn" id="project-list-btn">All Projects</div>
-            <div class="nav-btn" id="add-project-button">Add New Project</div>
+        <div class="navbar" id="navbar">
+            <div class="nav-btn" id="add-project-btn">Add New Project</div>
         </div>
-        <div class="popup-form">
+        <div class="popup-form" id="popup-form">
             <form  class="form-container" id="form">
                 <input type="text" id="title" placeholder="Project Title" name="title" required>
                 <input type="text" id="project-description" placeholder="Project Description" name="project-description" required>
-                <input type="date" id="due-date" placeholder="Due Date" name="due-date" required>
-                <input type="number" id="quantity" name="quantity" min="1" max="5" placeholder="Priority Level 1 -5">
-                <input type="submit" value="Submit">
+                <label for="duedate">Due Date</label>
+                <input type="date" id="due-date" name="due-date" required>
+                <input type="number" id="priority" name="quantity" min="1" max="5" placeholder="Priority Level 1 -5">
+                <input type="submit" value="Submit" id="submit-btn">
             </form>
         </div>
-            <form class="project-card">
-                <h2 class="project-title" id="title"></h2>
+            <!--<form class="project-card">
+                <h2 class="project-title" id="project-title"></h2>
                 <p id="description"></p>
                 <div class="todo-header">
                     <h2>To Do List</h2>
@@ -32,7 +32,7 @@
                     <span class="add-btn" id="add">Add</span>
                 </div>
                 <ul id="list"></ul>
-            </form>
+            </form>-->
 
     </div>
 </body>

@@ -1,5 +1,10 @@
 import './style.css';
 
+import UI from './ui';
+
+document.addEventListener('DOMContentLoaded', UI.loadHomePage);
+
+/*
 //add a check symbol to a clicked item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
@@ -57,3 +62,4 @@ function newElement() {
       };
     };
   };
+*/
