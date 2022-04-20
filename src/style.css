@@ -1,23 +1,26 @@
 * {
     box-sizing: border-box;
-    
+    padding: 0;
+    margin: 0;
 }
 
 body {
     background-color: #888;
+    font-family: 'Roboto', sans-serif;
 }
 
-h1 {
+.header-title {
     text-align: center;
-    color: white;
+    color: aliceblue;
     background-color: #555;
     height: 75px;
-    padding-top: 20px;
+    padding: 1em;
 }
 
-h2 {
+h2, h6 {
     text-align: center;
-    padding-bottom: 10px;
+    padding: .5em;
+    
 }
 
 ul { 
@@ -33,7 +36,7 @@ li {
     font-size: 18px;
     font-weight: 600;
     padding: 10px;
-    
+    margin-top: 1em;
 }
 
 ul li {
@@ -82,7 +85,7 @@ input {
     border: none;
     border-radius: 0;
     width: 100%;
-    padding: 10px;
+    padding: 1em;
     float: left;
     font-size: 16px;
     cursor: pointer;
@@ -97,9 +100,8 @@ input:hover:nth-child(6) {
   
 }
 
-.container {
-    width: 1275px;
-    margin: auto;
+.header {
+    background-color: #555;
 }
     
 .add-btn {
@@ -129,9 +131,9 @@ input:hover:nth-child(6) {
     text-align: center;
     border: solid 1px black;
     border-radius: 5px;
-    margin: 20px 0px;
+    margin: 3em;
     background-color: lightslategrey;
-    width: 150px;
+    width: 20vw;
 }
 
 .nav-btn:hover {
@@ -141,7 +143,7 @@ input:hover:nth-child(6) {
 
 .todo-header {
     background-color: lightslategray;
-    padding: 40px 40px 60px;
+    padding: 1em 1em 1em;
     color: white;
     text-align: center;
 }
@@ -150,6 +152,7 @@ input:hover:nth-child(6) {
     width: 425px;
     background-color: darkgrey;
     border: solid 2px black;
+    padding: 1em;
 }
 
 .close {

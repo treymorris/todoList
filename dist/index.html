@@ -9,16 +9,18 @@
 </head>
 <body>
     <div class="container">
-        <h1>Task Manager</h1>
-        <div class="navbar" id="navbar">
-            <div class="nav-btn" id="add-project-btn">Add New Project</div>
+        <div class="header">
+            <h1 class="header-title">Task Manager</h1>
+            <div class="navbar" id="navbar">
+                <div class="nav-btn" id="add-project-btn">Add New Project</div>
+            </div>
         </div>
         <div class="popup-form" id="popup-form">
             <form  class="form-container" id="form">
                 <input type="text" id="title" placeholder="Project Title" name="title" required>
-                <input type="text" id="project-description" placeholder="Project Description" name="project-description" required>
-                <input type="date" id="due-date" name="due-date" required>
-                <input type="number" id="priority" name="quantity" min="1" max="5" placeholder="Priority Level 1 -5">
+                
+                <input type="date" id="date" name="date" required>
+                
                 <input type="submit" value="Submit" id="submit-btn">
             </form>
         </div>

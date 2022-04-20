@@ -35,12 +35,10 @@ export default class UI {
   static addProject(e) {
     e.preventDefault();
     const title = document.getElementById('title').value;
-    const description = document.getElementById('project-description').value;
-    const dueDate = document.getElementById('due-date').value;
-    const priority = document.getElementById('priority').value;
-    const newProject = new Project(title, description, dueDate, priority);
-    this.projects = [];
-    this.projects.push(newProject);
+    const date = document.getElementById('date').value
+    
+    const newProject = new Project(title, date);
+    
     document.getElementById('form').style.display = 'none';
     UI.createProjectCard(newProject);
     
@@ -52,42 +50,52 @@ export default class UI {
     
     const projectCard = document.createElement('form');
     projectCard.classList.add('project-card');
-    formContainer.appendChild(projectCard);
+    
 
     const projectTitle = document.createElement('h2');
     projectTitle.classList.add('project-title');
-    projectCard.appendChild(projectTitle);
-    projectTitle.textContent = newProject.title;
-
-    const description = document.createElement('p');
-    description.id = 'description';
-    projectTitle.appendChild(description);
-    description.textContent = newProject.description;
-
+    
+    projectTitle.textContent = 'Project: ' + newProject.title;
+    
+   const date = document.createElement('h6');
+   date.classList.add('project-title');
+   date.textContent = 'Created on: ' + newProject.date;
+  
     const todoHeader = document.createElement('div');
     todoHeader.classList.add('todo-header');
-    description.appendChild(todoHeader);
+    
 
     const todoText = document.createElement('h2');
-    todoText.textContent = 'To Do List';
-    todoHeader.appendChild(todoText);
+    todoText.textContent = 'Task List';
+    
 
     const inputText = document.createElement('input');
     inputText.type = 'text';
     inputText.id = 'todotext';
     inputText.placeholder = 'task...';
-    todoText.appendChild(inputText);
+    
 
     const addBtn = document.createElement('SPAN');
     addBtn.classList.add('add-btn');
     addBtn.id = 'add';
     addBtn.textContent = 'Add';
-    todoText.appendChild(addBtn);
+    
 
     const list = document.createElement('ul');
     list.id = 'list';
+   
+   
+    formContainer.appendChild(projectCard);
+   projectCard.appendChild(projectTitle);
+   projectCard.appendChild(date);
+    projectCard.appendChild(todoHeader);
+    todoHeader.appendChild(todoText);
+    projectCard.appendChild(inputText);
+    projectCard.appendChild(addBtn);
     todoHeader.appendChild(list);
     
+   
+   
     const add = document.getElementById("add");
     add.addEventListener('click', UI.newElement);
 
