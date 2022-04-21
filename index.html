@@ -9,21 +9,20 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1 class="header-title">Task Manager</h1>
+        <div class="sidenav">
+            <h1 class="title">Task Manager</h1>
             <div class="navbar" id="navbar">
                 <div class="nav-btn" id="add-project-btn">Add New Project</div>
             </div>
         </div>
+        <h1 class="title">Project List</h1>
         <div class="popup-form" id="popup-form">
             <form  class="form-container" id="form">
-                <input type="text" id="title" placeholder="Project Title" name="title" required>
-                
-                <input type="date" id="date" name="date" required>
-                
-                <input type="submit" value="Submit" id="submit-btn">
+                <input type="text" id="title" placeholder="Project Title" name="title" required >
+                <input type="button" value="Submit" class="submit-btn" id="submit-btn">
             </form>
         </div>
+   
             <!--<form class="project-card">
                 <h2 class="project-title" id="project-title"></h2>
                 <p id="description"></p>
