@@ -1,9 +1,9 @@
-
+//const { DateTime } = require('luxon');
 
 export default class Project {
-   constructor(title, date) {
+   constructor(title) {
      this.title = title;
-     this.date = date;
+     this.date = Date();
      this.tasks = [];
   }
   
