@@ -6,34 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
     <script src="bundle.js" defer></script>
+    <script src="https://kit.fontawesome.com/a7c1e5380d.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <h1 class="header"><span><i class="fa-solid fa-hourglass fa-sm"></i> </span>Task Manager</h1>
     <div class="container">
         <div class="sidenav">
-            <h1 class="title">Task Manager</h1>
             <div class="navbar" id="navbar">
-                <div class="nav-btn" id="add-project-btn">Add New Project</div>
+                <button class="nav-btn" id="current-btn"><span><i class="fa-solid fa-inbox fa-lg"></i> </span>Current</button>
+                <button class="nav-btn" id="today-btn"><span><i class="fa-solid fa-calendar-day fa-lg"></i> </span>Today</button>
+                <button class="nav-btn" id="week-btn"><span><i class="fa-solid fa-calendar-week fa-lg"></i> </span>This Week</button>
+                <button class="nav-btn" id="add-project-btn"><span><i class="fa-solid fa-arrow-down fa-lg"></i> </span>Add New Project</button>
+                <h2 class="nav-header">Projects List</h2>
             </div>
         </div>
-        <h1 class="title">Project List</h1>
+        <h2 class="title">Current</h2>
         <div class="popup-form" id="popup-form">
-            <form  class="form-container" id="form">
+            <form class="form-container" id="form">
                 <input type="text" id="title" placeholder="Project Title" name="title" required >
-                <input type="button" value="Submit" class="submit-btn" id="submit-btn">
+                <input type="button" value="Add" class="submit-btn" id="submit-btn">
+                <input type="button" value="Cancel" class="submit-btn" id="submit-btn">
             </form>
         </div>
-   
-            <!--<form class="project-card">
-                <h2 class="project-title" id="project-title"></h2>
-                <p id="description"></p>
-                <div class="todo-header">
-                    <h2>To Do List</h2>
-                    <input type="text" id="todotext" placeholder="task...">
-                    <span class="add-btn" id="add">Add</span>
-                </div>
-                <ul id="list"></ul>
-            </form>-->
-
     </div>
 </body>
 </html>

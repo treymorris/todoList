@@ -1,9 +1,9 @@
-//const { DateTime } = require('luxon');
+const { DateTime } = require('luxon');
 
 export default class Project {
    constructor(title) {
      this.title = title;
-     this.date = Date();
+     this.date = DateTime.now().toLocaleString(DateTime.DATE_MED);
      this.tasks = [];
   }
   
@@ -21,10 +21,6 @@ export default class Project {
 
   getDate() {
     return this.date;
-  }
-
-  dateFormatted() {
-    return DateTime.fromJSDATE(this.dueDate).toLocaleString(DateTime.DATE_MED);
   }
 
   setTasks(tasks) {

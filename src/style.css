@@ -19,17 +19,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.container {
-    margin-left: 20vw;
-}
-
-.title {
-    text-align: center;
-    color: var(--font-light);
-    background-color: var(--bg-dark);
-    padding: 1em;
-    
-}
 
 h2, h6 {
     text-align: center;
@@ -50,7 +39,7 @@ li {
     font-size: 18px;
     font-weight: 600;
     padding: 10px;
-    margin-top: 1em;
+    margin-top: .25em;
 }
 
 ul li {
@@ -69,17 +58,17 @@ ul li {
 
 ul li:nth-child(odd) {
     background: #f9f9f9;
-  }
+}
 
 ul li:hover {
     background: var(--bg-light);
-  }
-  
+}
+
 ul li.checked {
     background: #888;
     color: #fff;
     text-decoration: line-through;
-  }
+}
 
 ul li.checked::before {
     content: '';
@@ -92,7 +81,7 @@ ul li.checked::before {
     transform: rotate(45deg);
     height: 15px;
     width: 7px;
-  }
+}
 
 input {
     margin: 0;
@@ -110,10 +99,29 @@ input:nth-child(6) {
 }
 
 input:hover:nth-child(6) {
-  background-color: #bbb;
-  
+    background-color: var(--button-hover);
+    
 }
-  
+
+.container {
+    margin-left: 20vw;
+}
+
+.header {
+    color: var(--font-dark);
+    background-color: var(--bg-dark);
+    padding: 1em;
+    
+}
+
+
+.title {
+    text-align: center;
+    color: var(--font-dark);
+    
+    padding: 1em;
+}
+
 .add-btn {
     padding: 10px;
     width: 25%;
@@ -121,40 +129,43 @@ input:hover:nth-child(6) {
     color: var(--font-medium);
     float: left;
     text-align: center;
-    font-size: 16px;
+    font-size: 1em;
     cursor: pointer;
     transition: 0.3s;
     border-radius: 0;
+    margin-top: .25em;
 }
 
 .add-btn:hover {
     background-color: #bbb;
 }
   
-.navbar {
-    display: flex;
-    justify-content: space-around;
-}
+
 
 .sidenav {
     height: 100%;
     width: 20vw;
     position: fixed;
     z-index: 1;
-    top: 0;
+    top: auto;
     left: 0;
     background-color: var(--bg-medium);
     overflow-x: hidden;
 }
 
+.nav-header {
+    margin-top: 1em;
+}
+
 .nav-btn {
+    display:block;
     padding: 10px;
-    text-align: center;
+    text-align: left;
     border: solid 1px black;
     border-radius: 5px;
-    margin: 3em;
-    background-color: lightslategrey;
-    width: 20vw;
+    margin: 1em auto;
+    background-color: var(--button);
+    width: 75%;
 }
 
 .nav-btn:hover {
@@ -173,7 +184,7 @@ input:hover:nth-child(6) {
 
 .todo-header {
     background-color: lightslategray;
-    
+    border: solid 1px var(--bg-dark);
     color: white;
     text-align: center;
 }
@@ -183,7 +194,7 @@ input:hover:nth-child(6) {
     background-color: darkgrey;
     border: solid 2px black;
     padding: 1em;
-    margin-top: 4em;
+    margin-top: 1em;
     
 }
 
@@ -229,7 +240,8 @@ input:hover:nth-child(6) {
   width: 75%;
   padding: 10px;
   float: left;
-  font-size: 16px;
+  font-size: 1em;
+  margin-top: .25em;
 }
 
 @keyframes addProjectMenu {

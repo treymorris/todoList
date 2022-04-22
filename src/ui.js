@@ -3,23 +3,12 @@ import  Project  from "./project";
 
 export default class UI {
 
+//Initialize page and load saved content
+  
   static loadHomePage() {
     //UI.loadProjects();
     UI.initPopUp();
-
   }
-
-  /*static loadProjects() {
-    Storage.getToDoList()
-    .getProjects()
-    .forEach((project) => {
-      if (
-        project.name !== ""
-      ) {
-        UI.createProject(project.name)
-      }
-    })
-  }*/
 
   static initPopUp() {
     const addBtn = document.getElementById('add-project-btn');
@@ -33,6 +22,8 @@ export default class UI {
     
 }
 
+//Create project content
+  
   static addProject() {
     
     const title = document.getElementById('title').value;
@@ -83,34 +74,29 @@ export default class UI {
     todoHeader.appendChild(list);
     
     const add = document.getElementById("add");
-    add.addEventListener('click', UI.newElement);
+    add.addEventListener('click', UI.addTask);
 }
 
- static newElement() {
-    var li = document.createElement("li");
-    var inputValue = document.getElementById("todotext").value;
-    var t = document.createTextNode(inputValue);
-    li.appendChild(t);
-    if (inputValue === '') {
-      alert("You must write something!");
-    } else {
-      document.getElementById("list").appendChild(li);
-    }
+ static createTask(task, date) {
+    const li = document.createElement("li");
+    li.textContent = task;
+    document.getElementById("list").appendChild(li);
     document.getElementById("todotext").value = "";
-    //add x mark for delete
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
+    
+    
+    const span = document.createElement("SPAN");
+    span.classList.add("close");
+    span.textContent = "x"
     li.appendChild(span);
-    var close = document.getElementsByClassName("close");
-    var i;
+   
+    const close = document.getElementsByClassName("close");
+    let i;
     for (i = 0; i < close.length; i++) {
       close[i].onclick = function() {
-        var div = this.parentElement;
-        div.style.display = "none";
+          const div = this.parentElement;
+          div.style.display = "none";
+        };
       };
-    };
     UI.addCheckMark();
 }
 
@@ -127,5 +113,23 @@ export default class UI {
 
   
   
-};
+  
+  // Create task event listeners
+  
+  static addTask() {
+    const inputValue = document.getElementById('todotext').value
+    const task = inputValue
 
+    if (task === '') {
+      alert('Please enter a task for the list!');
+      return;
+    }
+    
+    UI.createTask(task, 'no date')
+  }
+
+
+
+
+
+};
