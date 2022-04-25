@@ -1,5 +1,5 @@
 import  Project  from "./project";
-
+//import LocalStorage from "./localStorage";
 
 export default class UI {
 
@@ -7,37 +7,41 @@ export default class UI {
   
   static loadHomePage() {
     //UI.loadProjects();
-    UI.initPopUp();
+    UI.initAddProjectBtn();
   }
 
-  static initPopUp() {
-    const addBtn = document.getElementById('add-project-btn');
-    addBtn.addEventListener('click', UI.initSubmitBtn);
-  }
+  // static loadProjects() {
+  //   LocalStorage.getTodoList().getProjects().forEach()((project) => {
+  //     if (project.name !== "Current" &&
+  //         project.name !== 'Today' &&
+  //         project.name !== 'This Week')
+  //       {UI.createProject(project.name)}
+  //   })
+  //   UI.initAddProjectBtn()
+  // }
 
-  static initSubmitBtn() {
-    document.getElementById('form').style.display = 'block';
-    const submitBtn = document.getElementById('submit-btn');
-    submitBtn.addEventListener('click', UI.addProject);
-    
-}
+  
 
-//Create project content
+  //Create project content
   
   static addProject() {
     
     const title = document.getElementById('title').value;
-  
     
+    if (title === '') {
+      alert('Please enter a name for the Project!');
+      return;
+    }
+
     const newProject = new Project(title);
     
-    document.getElementById('form').style.display = 'none';
+    UI.clearForm();
     UI.createProjectCard(newProject);
     
 }
 
- static createProjectCard(newProject) {
-
+static createProjectCard(newProject) {
+  
     const formContainer = document.getElementById('popup-form');
     const projectCard = document.createElement('form');
     const projectTitle = document.createElement('h2');
@@ -75,9 +79,9 @@ export default class UI {
     
     const add = document.getElementById("add");
     add.addEventListener('click', UI.addTask);
-}
-
- static createTask(task, date) {
+  }
+  
+  static createTask(task) {
     const li = document.createElement("li");
     li.textContent = task;
     document.getElementById("list").appendChild(li);
@@ -88,20 +92,20 @@ export default class UI {
     span.classList.add("close");
     span.textContent = "x"
     li.appendChild(span);
-   
+    
     const close = document.getElementsByClassName("close");
     let i;
     for (i = 0; i < close.length; i++) {
       close[i].onclick = function() {
-          const div = this.parentElement;
-          div.style.display = "none";
-        };
+        const div = this.parentElement;
+        div.style.display = "none";
       };
+    };
     UI.addCheckMark();
-}
-
-
-
+  }
+  
+  
+  
   static addCheckMark() {
     var list = document.querySelector('ul');
     list.addEventListener('click', function (e) {
@@ -110,26 +114,42 @@ export default class UI {
       }
     });
   };
-
   
+  static clearForm() {
+    document.getElementById('form').style.display = 'none';
+  }
   
   
   // Create task event listeners
   
   static addTask() {
-    const inputValue = document.getElementById('todotext').value
-    const task = inputValue
 
+    const task = document.getElementById('todotext').value
+    
     if (task === '') {
       alert('Please enter a task for the list!');
       return;
     }
     
-    UI.createTask(task, 'no date')
+    UI.createTask(task)
   }
-
-
-
+  
+  
+  
+  // Project event listeners
+  
+  static initAddProjectBtn() {
+    const addBtn = document.getElementById('add-project-btn');
+    addBtn.addEventListener('click', UI.initAddProjectBtns);
+  }
+  
+  static initAddProjectBtns() {
+    document.getElementById('form').style.display = 'block';
+    const submitBtn = document.getElementById('submit-project-btn');
+    const cancelBtn = document.getElementById('cancel-project-btn');
+    submitBtn.addEventListener('click', UI.addProject);
+    cancelBtn.addEventListener('click', UI.clearForm);
+  }
 
 
 };
