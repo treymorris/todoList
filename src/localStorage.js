@@ -18,39 +18,39 @@ export default class LocalStorage{
         return todoList
     }
 
-    static addProject(project) {
+    static addProject(newProject) {
         const todoList = LocalStorage.getTodoList()
-        todoList.addProject(project)
+        todoList.addProject(newProject)
         LocalStorage.saveTodoList(todoList)
     }
 
-    static deleteProject(project) {
+    static deleteProject(projectName) {
         const todoList = LocalStorage.getTodoList()
-        todoList.deleteProject(project)
+        todoList.deleteProject(projectName)
         LocalStorage.saveTodoList(todoList)
     }
 
-    static addTask(project, task) {
+    static addTask(projectName, task) {
         const todoList = LocalStorage.getTodoList()
-        todoList.getProject(project).addTask(task)
+        todoList.getProject(projectName).addTask(task)
         LocalStorage.saveTodoList(todoList)
     }
 
-    static deleteTask(project, task) {
+    static deleteTask(projectName, taskName) {
         const todoList = LocalStorage.getTodoList()
-        todoList.getProject(project).deleteTask(task)
+        todoList.getProject(projectName).deleteTask(taskName)
         LocalStorage.saveTodoList(todoList)
     }
 
-    static updateTask(project, task, name) {
+    static updateTask(projectName, taskName, newTaskName) {
         const todoList = LocalStorage.getTodoList()
-        todoList.getProject(project).getTasks(task).setName(name)
+        todoList.getProject(projectName).getTasks(taskName).setName(newTaskName)
         LocalStorage.saveTodoList(todoList)
     }
 
-    static setTaskDate(project, task, date) {
+    static setTaskDate(projectName, taskName, newDueDate) {
         const todoList = LocalStorage.getTodoList()
-        todoList.getProject(project).getTasks(task).setDate(date)
+        todoList.getProject(projectName).getTasks(taskName).setDate(newDueDate)
         LocalStorage.saveTodoList(todoList)
     }
 

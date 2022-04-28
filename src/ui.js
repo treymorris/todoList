@@ -1,24 +1,27 @@
 import  Project  from "./project";
-//import LocalStorage from "./localStorage";
+import LocalStorage from "./localStorage";
+import Task from "./task";
 
 export default class UI {
 
 //Initialize page and load saved content
   
   static loadHomePage() {
-    //UI.loadProjects();
+    UI.loadProjects();
     UI.initAddProjectBtn();
   }
 
-  // static loadProjects() {
-  //   LocalStorage.getTodoList().getProjects().forEach()((project) => {
-  //     if (project.name !== "Current" &&
-  //         project.name !== 'Today' &&
-  //         project.name !== 'This Week')
-  //       {UI.createProject(project.name)}
-  //   })
-  //   UI.initAddProjectBtn()
-  // }
+  static loadProjects() {
+    LocalStorage.getTodoList()
+      .getProjects()
+      .forEach((project) => {
+      if (project.title !== "Current" &&
+          project.title !== 'Today' &&
+          project.title !== 'This Week')
+        {UI.createProjectList(project.title)}
+    })
+    UI.initAddProjectBtn()
+  }
 
   
 
@@ -33,14 +36,22 @@ export default class UI {
       return;
     }
 
-    const newProject = new Project(title);
+    if (LocalStorage.getTodoList().contains(title)) {
+      alert('There is already a project by that name.');
+      return
+    }
+    // let project = new Project(title)
+    // LocalStorage.addProject(project)
     
+    //UI.createProjectCard(project);
+
+    LocalStorage.addProject(new Project(title))
+    UI.createProjectList(title);
     UI.clearForm();
-    UI.createProjectCard(newProject);
     
 }
 
-static createProjectCard(newProject) {
+static createProjectCard(project) {
   
     const formContainer = document.getElementById('popup-form');
     const projectCard = document.createElement('form');
@@ -58,8 +69,8 @@ static createProjectCard(newProject) {
     todoHeader.classList.add('todo-header');
     addBtn.classList.add('add-btn');
     
-    projectTitle.textContent = 'Project: ' + newProject.title;
-    date.textContent = 'Created on: ' + newProject.date;
+    projectTitle.textContent = 'Project: ' + project.title;
+    date.textContent = 'Created on: ' + project.date;
     todoText.textContent = 'Task List';
     inputText.type = 'text';
     inputText.id = 'todotext';
@@ -79,6 +90,13 @@ static createProjectCard(newProject) {
     
     const add = document.getElementById("add");
     add.addEventListener('click', UI.addTask);
+}
+  
+  static createProjectList(name) {
+    const list = document.getElementById('navbar');
+    const project = document.createElement('p');
+    project.textContent = `${name}`;
+    list.appendChild(project);
   }
   
   static createTask(task) {
@@ -107,15 +125,17 @@ static createProjectCard(newProject) {
   
   
   static addCheckMark() {
-    var list = document.querySelector('ul');
+    const list = document.querySelector('ul');
     list.addEventListener('click', function (e) {
       if (e.target.tagName === 'LI') {
         e.target.classList.toggle('checked');
       }
-    });
-  };
+    }, false);
+  }
   
   static clearForm() {
+    const titleInput = document.getElementById('title')
+    titleInput.value = '';
     document.getElementById('form').style.display = 'none';
   }
   
@@ -125,11 +145,20 @@ static createProjectCard(newProject) {
   static addTask() {
 
     const task = document.getElementById('todotext').value
+    //const project = document.getElementById('project-title').value
     
     if (task === '') {
       alert('Please enter a task for the list!');
       return;
     }
+
+    // if (LocalStorage.getTodoList().getProject(project).contains(task)) {
+    //   alert('Task names must be different!')
+    //   task.value = ''
+    //   return
+    // }
+
+    //LocalStorage.addTask(project, new Task(task))
     
     UI.createTask(task)
   }

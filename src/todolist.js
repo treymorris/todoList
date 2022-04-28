@@ -20,33 +20,33 @@ export default class TodoList {
         return this.projects
     }
 
-    getOneProject(projectName) {
-        return this.projects.find((project) => project.getName() === projectName)
+    getProject(projectName) {
+        return this.projects.find((project) => project.getTitle() === projectName)
     }
 
-    contains(projectName) {
-        return this.projects.some((project) => project.getName() === projectName)
+    contains(title) {
+        return this.projects.some((project) => project.getTitle() === title)
     }
 
     addProject(newProject) {
-        if (this.projects.find((project) => project.name === newProject.name))
+        if (this.projects.find((project) => project.title === newProject.title))
             return
         this.projects.push(newProject)
     }
 
     deleteProject(projectName) {
-        const project = this.project.find((project) => project.getName() === projectName)
+        const project = this.project.find((project) => project.getTitle() === projectName)
         this.projects.splice(this.projects.indexOf(project), 1)
     }
 
     updateToday() {
         this.getOneProject('Today').tasks = []
         this.projects.forEach((project) => {
-            if (project.getName() === 'Today' || project.getName() === 'This Week')
+            if (project.getTitle() === 'Today' || project.getTitle() === 'This Week')
                 return
             const today = project.getToday()
             today.forEach((task) => {
-                const taskName = `${task.getName()} (${project.getName()})`
+                const taskName = `${task.getName()} (${project.getTitle()})`
                 this.getOneProject('Today').addOneTask(new Task(taskName, task.getDate()))
             })
         })
@@ -55,12 +55,12 @@ export default class TodoList {
     updateWeek() {
         this.getOneProject('This Week').tasks = []
         this.projects.forEach((project) => {
-            if (project.getName() == 'Taday' || project.getName() === 'This Week')
+            if (project.getTitle() == 'Taday' || project.getTitle() === 'This Week')
                 return
             
             const week = project.getWeek()
             week.forEach((task) => {
-                const taskName = `${task.getName()} (${project.getName()})`
+                const taskName = `${task.getName()} (${project.getTitle()})`
                 this.getOneProject('This Week'.addOneTask(new Task(taskName, task.getDate())))
             })
         })
