@@ -159,6 +159,7 @@ input:hover:nth-child(6) {
 
 .nav-header {
     margin-top: 1em;
+    
 }
 
 .nav-btn {
@@ -170,6 +171,34 @@ input:hover:nth-child(6) {
     margin: 1em auto;
     background-color: var(--button);
     width: 75%;
+}
+
+.project-btn {
+    display:block;
+    padding: 10px;
+    text-align: left;
+    border: solid 1px black;
+    border-radius: 5px;
+    margin: .5em auto;
+    background-color: var(--button);
+    width: 75%;
+}
+
+.project-btn:hover {
+    background-color: var(--button-hover);
+}
+.delete-btn {
+    background-color: transparent;
+    position: absolute;
+    right: 3.5em;
+    border: none;
+    
+}
+
+.delete-btn:hover {
+    border-color:  rgb(236, 80, 80);
+    transform: scale(1.1);
+    box-shadow: 0 0 1rem red;
 }
 
 .nav-btn:hover {

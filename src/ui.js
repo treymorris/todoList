@@ -9,6 +9,7 @@ export default class UI {
   static loadHomePage() {
     UI.loadProjects();
     UI.initAddProjectBtn();
+    document.addEventListener('keydown', UI.handleKeyboard)
   }
 
   static loadProjects() {
@@ -23,6 +24,14 @@ export default class UI {
     UI.initAddProjectBtn()
   }
 
+  static loadOneProject(name) {
+    LocalStorage.getTodoList()
+      .getProjects()
+      .forEach((project) => {
+        if (project.title === name)
+        {UI.createProjectCard(project)}
+    })
+  }
   
 
   //Create project content
@@ -40,16 +49,16 @@ export default class UI {
       alert('There is already a project by that name.');
       return
     }
-    // let project = new Project(title)
-    // LocalStorage.addProject(project)
-    
-    //UI.createProjectCard(project);
 
     LocalStorage.addProject(new Project(title))
     UI.createProjectList(title);
     UI.clearForm();
-    
-}
+  }
+
+  static handleKeyboard(e) {
+    if (e.key === 'Enter') UI.addProject()
+    if (e.key === 'Escape') UI.clearForm()
+  }
 
 static createProjectCard(project) {
   
@@ -93,11 +102,19 @@ static createProjectCard(project) {
 }
   
   static createProjectList(name) {
-    const list = document.getElementById('navbar');
-    const project = document.createElement('p');
-    project.textContent = `${name}`;
-    list.appendChild(project);
+    const projectList = document.getElementById('navbar');
+    const project = document.createElement('button');
+    project.classList.add("project-btn");
+    projectList.appendChild(project);
+    project.innerHTML = `${name}
+    <span class="slide-right">
+      <button class='delete-btn'>
+        <i class="fa-solid fa-skull-crossbones fa-xl"></i>
+      </button>
+    </span>`;
+    project.addEventListener('click', ()=> UI.loadOneProject(`${name}`))
   }
+  
   
   static createTask(task) {
     const li = document.createElement("li");
