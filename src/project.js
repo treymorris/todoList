@@ -1,12 +1,12 @@
-const { DateTime } = require('luxon');
+const { DateTime } = require("luxon");
 
 export default class Project {
-   constructor(title) {
-     this.title = title;
-     this.date = DateTime.now().toLocaleString(DateTime.DATE_MED);
-     this.tasks = [];
+  constructor(title) {
+    this.title = title;
+    this.date = DateTime.now().toLocaleString(DateTime.DATE_MED);
+    this.tasks = [];
   }
-  
+
   setTitle(title) {
     this.title = title;
   }
@@ -31,17 +31,21 @@ export default class Project {
     return this.tasks;
   }
 
-  getOneTask(taskTitle) {
-    return this.tasks.find((task) => task.getTitle() === taskTitle);
+  getTask(taskName) {
+    return this.tasks.find((task) => task.getTitle() === taskName);
   }
 
-  addOneTask(newTask) {
-    if (this.tasks.find((task) => task.getTitle() === newTask.title)) return
+  contains(taskName) {
+    return this.tasks.some((task) => task.getName() === taskName)
+  }
+
+  addTask(newTask) {
+    if (this.tasks.find((task) => task.getName() === newTask.name)) return;
     this.tasks.push(newTask);
   }
 
   deleteTask(taskTitle) {
-    this.tasks = this.tasks.filter((task) => task.title !== taskTitle)
+    this.tasks = this.tasks.filter((task) => task.title !== taskTitle);
   }
 
   //make these work with luxon
@@ -58,5 +62,4 @@ export default class Project {
       return isThisWeek(subDays(toDate(taskDate), 1));
     });
   }
-
-};
+}
