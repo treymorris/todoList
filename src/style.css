@@ -181,6 +181,7 @@ input:hover:nth-child(6) {
 .project-btn:hover {
   background-color: var(--button-hover);
 }
+
 .delete-btn {
   background-color: transparent;
   position: absolute;
@@ -238,6 +239,17 @@ input:hover:nth-child(6) {
 }
 
 .close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.close-project {
+  padding: 12px 16px 12px 16px;
+  float: right;
+  
+}
+
+.close-project:hover {
   background-color: #f44336;
   color: white;
 }

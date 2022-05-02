@@ -115,6 +115,22 @@ export default class UI {
     project.classList.add("project-btn");
     projectList.appendChild(project);
     project.innerHTML = `${name}`;
+    
+    const span = document.createElement("SPAN");
+    span.classList.add("close-project");
+    span.textContent = "x";
+    project.appendChild(span);
+
+    const close = document.getElementsByClassName("close-project");
+    let i;
+    for (i = 0; i < close.length; i++) {
+      close[i].onclick = function () {
+        const div = this.parentElement;
+        div.style.display = "none";
+        LocalStorage.deleteProject(name);
+      };
+    }
+
     project.addEventListener("click", () => {UI.clearCard(), UI.loadOneProject(`${name}`)});
   }
 
@@ -183,9 +199,7 @@ export default class UI {
     UI.createTask(projectName, taskName);
   }
 
-  static deleteTask(task) {
-    LocalStorage.deleteTask(task)
-  }
+  
   
   // Project event listeners
   
