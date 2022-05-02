@@ -7,7 +7,7 @@ export default class UI {
 
   static loadHomePage() {
     UI.loadProjects();
-    UI.initAddProjectBtn();
+    UI.initProjectBtns();
     UI.loadOneProject('Current');
     document.addEventListener("keydown", UI.handleKeyboard);
   }
@@ -24,7 +24,7 @@ export default class UI {
           UI.createProjectList(project.title);
         }
       });
-    UI.initAddProjectBtn();
+    UI.initProjectBtns();
   }
 
   static loadOneProject(name) {
@@ -72,6 +72,7 @@ export default class UI {
     const inputText = document.createElement("input");
     const addBtn = document.createElement("SPAN");
     const list = document.createElement("ul");
+    let tasks = project.tasks;
     
 
     projectCard.classList.add("project-card");
@@ -90,7 +91,7 @@ export default class UI {
     addBtn.id = "add";
     addBtn.textContent = "Add";
     list.id = "list";
-    
+
     cardAnchor.appendChild(projectCard);
     projectCard.appendChild(projectTitle);
     projectCard.appendChild(date);
@@ -99,6 +100,10 @@ export default class UI {
     projectCard.appendChild(inputText);
     projectCard.appendChild(addBtn);
     todoHeader.appendChild(list);
+
+    tasks.forEach((task) => {
+      UI.createTask(project.title, task.name);
+    });
 
     const add = document.getElementById("add");
     add.addEventListener("click", () => UI.addTask(project.title));
@@ -110,12 +115,12 @@ export default class UI {
     project.classList.add("project-btn");
     projectList.appendChild(project);
     project.innerHTML = `${name}`;
-    project.addEventListener("click", () => {UI.loadOneProject(`${name}`), UI.clearCard()});
+    project.addEventListener("click", () => {UI.clearCard(), UI.loadOneProject(`${name}`)});
   }
 
-  static createTask(task) {
+  static createTask(projectName, taskName) {
     const li = document.createElement("li");
-    li.textContent = task;
+    li.textContent = taskName;
     document.getElementById("list").appendChild(li);
     document.getElementById("todotext").value = "";
 
@@ -130,6 +135,7 @@ export default class UI {
       close[i].onclick = function () {
         const div = this.parentElement;
         div.style.display = "none";
+        LocalStorage.deleteTask(projectName, taskName);
       };
     }
     UI.addCheckMark();
@@ -156,11 +162,10 @@ export default class UI {
 
   static clearCard() {
     const cardAnchor = document.getElementById('content');
-    cardAnchor.removeChild(cardAnchor.firstElementChild)
+    cardAnchor.removeChild(cardAnchor.firstElementChild);
   }
 
-  // Create task event listeners
-
+  
   static addTask(projectName) {
     const taskName = document.getElementById("todotext").value;
     
@@ -168,32 +173,34 @@ export default class UI {
       alert("Please enter a task for the list!");
       return;
     }
-
     if (LocalStorage.getTodoList().getProject(projectName).contains(taskName)) {
       alert('Task names must be different!')
       taskName.value = ''
       return
     }
-
+    
     LocalStorage.addTask(projectName, new Task(taskName))
-
-    UI.createTask(taskName);
+    UI.createTask(projectName, taskName);
   }
 
+  static deleteTask(task) {
+    LocalStorage.deleteTask(task)
+  }
+  
   // Project event listeners
-
-  static initAddProjectBtn() {
+  
+  static initProjectBtns() {
     const addBtn = document.getElementById("add-project-btn");
     const currentBtn = document.getElementById("current-btn");
     const todayBtn = document.getElementById("today-btn");
     const weekBtn = document.getElementById("week-btn");
-    addBtn.addEventListener("click", UI.initAddProjectBtns);
-    currentBtn.addEventListener("click", () => {UI.loadOneProject("Current"), UI.clearCard()});
-    todayBtn.addEventListener("click", () => {UI.loadOneProject("Today"), UI.clearCard()});
-    weekBtn.addEventListener("click", () => {UI.loadOneProject("This Week"), UI.clearCard()});
+    addBtn.addEventListener("click", UI.initAddProjectFormBtns);
+    currentBtn.addEventListener("click", () => {UI.clearCard(), UI.loadOneProject("Current")});
+    todayBtn.addEventListener("click", () => {UI.clearCard(), UI.loadOneProject("Today")});
+    weekBtn.addEventListener("click", () => {UI.clearCard(), UI.loadOneProject("This Week")});
   }
-
-  static initAddProjectBtns() {
+  
+  static initAddProjectFormBtns() {
     document.getElementById("form").style.display = "block";
     const submitBtn = document.getElementById("submit-project-btn");
     const cancelBtn = document.getElementById("cancel-project-btn");
@@ -202,3 +209,5 @@ export default class UI {
     
   }
 }
+
+// Create task event listeners

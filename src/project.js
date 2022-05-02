@@ -45,7 +45,7 @@ export default class Project {
   }
 
   deleteTask(taskTitle) {
-    this.tasks = this.tasks.filter((task) => task.title !== taskTitle);
+    this.tasks = this.tasks.filter((task) => task.name !== taskTitle);
   }
 
   //make these work with luxon

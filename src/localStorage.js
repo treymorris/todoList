@@ -49,6 +49,7 @@ export default class LocalStorage {
   }
 
   static deleteTask(projectName, taskName) {
+    console.log('hello')
     const todoList = LocalStorage.getTodoList();
     todoList.getProject(projectName).deleteTask(taskName);
     LocalStorage.saveTodoList(todoList);
