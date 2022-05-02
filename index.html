@@ -1,33 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Manager</title>
     <script src="bundle.js" defer></script>
-    <script src="https://kit.fontawesome.com/a7c1e5380d.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <h1 class="header"><span><i class="fa-solid fa-hourglass fa-sm"></i> </span>Task Manager</h1>
+    <script
+      src="https://kit.fontawesome.com/a7c1e5380d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1 class="header">
+      <span><i class="fa-solid fa-hourglass fa-sm"></i> </span>Task Manager
+    </h1>
     <div class="container">
-        <div class="sidenav">
-            <div class="navbar" id="navbar">
-                <button class="nav-btn" id="current-btn"><span><i class="fa-solid fa-inbox fa-lg"></i> </span>Current</button>
-                <button class="nav-btn" id="today-btn"><span><i class="fa-solid fa-calendar-day fa-lg"></i> </span>Today</button>
-                <button class="nav-btn" id="week-btn"><span><i class="fa-solid fa-calendar-week fa-lg"></i> </span>This Week</button>
-                <button class="nav-btn" id="add-project-btn"><span><i class="fa-solid fa-arrow-down fa-lg"></i> </span>Add New Project</button>
-                <h2 class="nav-header" id="projects-list">Projects List</h2>
-            </div>
+      <div class="sidenav">
+        <div class="navbar" id="navbar">
+          <button class="nav-btn" id="current-btn">
+            <span><i class="fa-solid fa-inbox fa-lg"></i> </span>Current
+          </button>
+          <button class="nav-btn" id="today-btn">
+            <span><i class="fa-solid fa-calendar-day fa-lg"></i> </span>Today
+          </button>
+          <button class="nav-btn" id="week-btn">
+            <span><i class="fa-solid fa-calendar-week fa-lg"></i> </span>This Week
+          </button>
+          <button class="nav-btn" id="add-project-btn">
+            <span><i class="fa-solid fa-arrow-down fa-lg"></i> </span>Add New Project
+          </button>
+          <h2 class="nav-header" id="projects-list">Projects List</h2>
         </div>
-        <h2 class="title">Current</h2>
-        <div class="popup-form" id="popup-form">
-            <form class="form-container" id="form">
-                <input type="text" id="title" placeholder="Project Name" name="title" required >
-                <input type="button" value="Submit Project" class="submit-btn" id="submit-project-btn">
-                <input type="button" value="Cancel" class="submit-btn" id="cancel-project-btn">
-            </form>
-        </div>
+      </div>
+      <div class="content" id="content"></div>
+      <div class="popup-form" id="popup-form">
+        <form class="form-container" id="form">
+          <input
+            type="text"
+            id="title"
+            placeholder="Project Name"
+            name="title"
+            required
+          />
+          <input
+            type="button"
+            value="Submit Project"
+            class="submit-btn"
+            id="submit-project-btn"
+          />
+          <input
+            type="button"
+            value="Cancel"
+            class="submit-btn"
+            id="cancel-project-btn"
+          />
+        </form>
+      </div>
     </div>
-</body>
+  </body>
 </html>
