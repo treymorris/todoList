@@ -223,5 +223,3 @@ export default class UI {
     
   }
 }
-
-// Create task event listeners

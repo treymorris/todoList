@@ -114,12 +114,12 @@ input:hover:nth-child(6) {
   color: var(--font-dark);
   background-color: var(--bg-dark);
   padding: 1em;
+  height: 10vh;
 }
 
 .title {
   text-align: center;
   color: var(--font-dark);
-
   padding: 1em;
 }
 
@@ -146,14 +146,18 @@ input:hover:nth-child(6) {
   width: 20vw;
   position: fixed;
   z-index: 1;
-  top: auto;
+  top: 0;
   left: 0;
   background-color: var(--bg-medium);
   overflow-x: hidden;
 }
 
+.navbar {
+  margin-top: 3em;
+}
+
 .nav-header {
-  margin-top: 1em;
+  margin-top: 3em;
 }
 
 .nav-btn {
@@ -202,6 +206,7 @@ input:hover:nth-child(6) {
 
 .submit-btn {
   background-color: var(--button);
+  border: solid 1px black;
 }
 
 .submit-btn:hover {
@@ -219,6 +224,7 @@ input:hover:nth-child(6) {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    height: 80vh;
 }
 
 
@@ -262,16 +268,21 @@ input:hover:nth-child(6) {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  position: absolute;
+  z-index: 1;
+  top: 15vh;
+  right: 35vw;
+  background-color: var(--bg-dark);
 }
 
 .form-container {
   display: none;
-  position: absolute;
-  z-index: 1;
+  /* position: absolute;
+  z-index: 1; */
   border: solid 2px black;
   width: 425px;
   margin-bottom: 2em;
-  margin-top: 3em;
+  /* margin-top: 3em; */
   animation-name: addProjectMenu;
   animation-duration: 300ms;
   animation-timing-function: ease-in-out;
