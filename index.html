@@ -12,12 +12,39 @@
     ></script>
   </head>
   <body>
-    <h1 class="header">
-      <span><i class="fa-solid fa-hourglass fa-sm"></i> </span>Task Manager
-    </h1>
+    <div class="header">
+      
+    </div>
+    <div class="popup-form" id="popup-form">
+      <form class="form-container" id="form">
+        <h2 class="popup-title">New Project</h2>
+        <input
+          type="text"
+          id="title"
+          placeholder="Project Name"
+          name="title"
+          required
+        />
+        <input
+          type="button"
+          value="Submit Project"
+          class="submit-btn"
+          id="submit-project-btn"
+        />
+        <input
+          type="button"
+          value="Cancel"
+          class="submit-btn"
+          id="cancel-project-btn"
+        />
+      </form>
+    </div>
     <div class="container">
       <div class="sidenav">
         <div class="navbar" id="navbar">
+          <h1 class="title">
+      <span><i class="fa-solid fa-hourglass fa-sm"></i> </span>Task Manager
+    </h1>
           <button class="nav-btn" id="current-btn">
             <span><i class="fa-solid fa-inbox fa-lg"></i> </span>Current
           </button>
@@ -34,29 +61,6 @@
         </div>
       </div>
       <div class="content" id="content"></div>
-      <div class="popup-form" id="popup-form">
-        <form class="form-container" id="form">
-          <input
-            type="text"
-            id="title"
-            placeholder="Project Name"
-            name="title"
-            required
-          />
-          <input
-            type="button"
-            value="Submit Project"
-            class="submit-btn"
-            id="submit-project-btn"
-          />
-          <input
-            type="button"
-            value="Cancel"
-            class="submit-btn"
-            id="cancel-project-btn"
-          />
-        </form>
-      </div>
     </div>
   </body>
 </html>
