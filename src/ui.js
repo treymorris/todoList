@@ -128,6 +128,7 @@ export default class UI {
         const div = this.parentElement;
         div.style.display = "none";
         LocalStorage.deleteProject(name);
+        UI.loadOneProject("Current");
       };
     }
 
